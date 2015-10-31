@@ -219,6 +219,12 @@ angular.module('gridshore.c3js.chart')
                     });
                 };
             }
+            if ($scope.subchart != null) {
+                config.subchart = $scope.subchart;
+            }
+            if ($scope.extent != null) {
+                config.axis.x.extent = $scope.extent;
+            }
 
             $scope.config = config;
 
@@ -470,6 +476,14 @@ angular.module('gridshore.c3js.chart')
                 $scope.grid = {};
             }
             $scope.grid["focus"] = {"show": false};
+        };
+
+        this.addSubchart = function(subchart) {
+            $scope.subchart = subchart;
+        };
+
+        this.addExtent = function(extent) {
+            $scope.extent = extent;
         };
 
         function addColumnProperties(id, columnType, columnName, columnColor) {

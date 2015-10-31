@@ -73,7 +73,7 @@ module.exports = function (grunt) {
         devserver: {
             options: {
                 base: 'examples',
-                port:8000
+                port: 8888
             },
             server: {}
         },
