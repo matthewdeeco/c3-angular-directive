@@ -1,5 +1,5 @@
 angular.module('gridshore.c3js.chart')
-    .directive('chartSubchart', ChartSubchart);
+    .directive('chartSubchart', ['$parse', ChartSubchart]);
 
 /**
  * @ngdoc directive
@@ -33,7 +33,7 @@ angular.module('gridshore.c3js.chart')
  *   <chart-subchart show-x="false" height="30" rotated-padding-right="230" extent="[0,18]"/>
  */
 
-function ChartSubchart () {
+function ChartSubchart ($parse) {
     var subchartLinker = function (scope, element, attrs, chartCtrl) {
         var subchart = {
             show: true,
@@ -46,24 +46,24 @@ function ChartSubchart () {
             subchart.axis.x.show = true;
         }
 
-        var height = attrs.height;
+        var height = parseInt(attrs.height);
         if (height) {
             subchart.size.height = height;
         }
 
-        var rotatedPaddingRight = attrs.rotatedPaddingRight;
+        var rotatedPaddingRight = parseInt(attrs.rotatedPaddingRight);
         if (rotatedPaddingRight) {
             subchart.rotated.padding.right = rotatedPaddingRight;
         }
 
-        var rotatedPaddingLeft = attrs.rotatedPaddingLeft;
+        var rotatedPaddingLeft = parseInt(attrs.rotatedPaddingLeft);
         if (rotatedPaddingLeft) {
             subchart.rotated.padding.left = rotatedPaddingLeft;
         }
 
         chartCtrl.addSubchart(subchart);
 
-        var extent = attrs.extent;
+        var extent = $parse(attrs.extent)(scope);
         if (extent) {
             chartCtrl.addExtent(extent);
         }

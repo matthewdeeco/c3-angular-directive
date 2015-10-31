@@ -84,9 +84,6 @@ angular.module('gridshore.c3js.chart')
             if ($scope.groups != null) {
                 config.data.groups = $scope.groups;
             }
-            if ($scope.showSubchart && $scope.showSubchart === "true") {
-                config.subchart = {"show": true};
-            }
             if ($scope.enableZoom && $scope.enableZoom === "true") {
                 config.zoom = {"enabled": true};
             }
@@ -223,6 +220,12 @@ angular.module('gridshore.c3js.chart')
                 config.subchart = $scope.subchart;
             }
             if ($scope.extent != null) {
+                if (config.axis === undefined) {
+                    config.axis = {};
+                }
+                if (config.axis.x === undefined) {
+                    config.axis.x = {};
+                }
                 config.axis.x.extent = $scope.extent;
             }
 
