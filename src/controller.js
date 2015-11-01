@@ -136,12 +136,14 @@ angular.module('gridshore.c3js.chart')
             }
             if ($scope.colors != null) {
                 config.color = {"pattern": $scope.colors};
-                config.color = {
-                    "pattern": $scope.colors,
-                    "threshold" : {
-                        "values" : $scope.colorThresholds
-                    }
-                };
+                if ($scope.colorThresholds != null) {
+                    config.color = {
+                        "pattern": $scope.colors,
+                        "threshold" : {
+                            "values" : $scope.colorThresholds
+                        }
+                    };
+                }
             }
             if ($scope.gauge != null) {
                 config.gauge = $scope.gauge;
