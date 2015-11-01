@@ -51,6 +51,7 @@ function ChartTooltip () {
         var show      = attrs.showTooltip;
         var hideTitle = attrs.hideTooltipTitle;
         var joined    = attrs.joinedTooltip;
+        var includeTotal = attrs.includeTotal;
 
         if (show && show === "false") {
             tooltip = {"show": false};
@@ -74,7 +75,8 @@ function ChartTooltip () {
                     tooltip         : 'c3-tooltip',
                     tooltipName     : 'c3-tooltip-name'
                 };
-                for (i = d[0].x; i < (d[0].x + 1); i++) {
+                var sum = 0;
+                for (i = 0; i < d.length; i++) {
                     if (! (d[i] && (d[i].value || d[i].value === 0))) { continue; }
 
                     if (! text) {
@@ -84,6 +86,7 @@ function ChartTooltip () {
 
                     value = valueFormat(d[i].value, d[i].ratio, d[i].id, d[i].index);
                     if (value !== undefined) {
+                        sum += d[i].value;
                         name = nameFormat(d[i].name, d[i].ratio, d[i].id, d[i].index);
                         bgcolor = $$.levelColor ? $$.levelColor(d[i].value) : color(d[i].id);
 
@@ -92,6 +95,12 @@ function ChartTooltip () {
                         text += "<td class='value'>" + value + "</td>";
                         text += "</tr>";
                     }
+                }
+                if (includeTotal && includeTotal === 'true') {
+                    text += "<tr class='" + CLASS.tooltipName + "'>'";
+                    text += "<td class='name' align='right'>Total</td>";
+                    text += "<td class='value'>" + valueFormat(sum, 1.0) + "</td>";
+                    text += "</tr>";
                 }
                 return text + "</table>";
             }
