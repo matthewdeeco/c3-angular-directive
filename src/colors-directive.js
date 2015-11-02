@@ -32,6 +32,12 @@ angular.module('gridshore.c3js.chart')
  */
 function ChartColors () {
     var colorsLinker = function (scope, element, attrs, chartCtrl) {
+        var columnColors = attrs.columnColors;
+        if (columnColors) {
+            columnColors = scope.$eval(columnColors);
+            chartCtrl.addColumnColors(columnColors);
+        }
+
         var pattern = attrs.colorPattern;
         if (pattern) {
             chartCtrl.addColors(pattern.split(","));

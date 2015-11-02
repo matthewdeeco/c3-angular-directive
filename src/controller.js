@@ -145,6 +145,9 @@ angular.module('gridshore.c3js.chart')
                     };
                 }
             }
+            if ($scope.columnColors != null) {
+                config.data.colors = $scope.columnColors;
+            }
             if ($scope.gauge != null) {
                 config.gauge = $scope.gauge;
             } else {
@@ -382,6 +385,10 @@ angular.module('gridshore.c3js.chart')
 
         this.addColors = function (colors) {
             $scope.colors = colors;
+        };
+
+        this.addColumnColors = function (columnColors) {
+            $scope.columnColors = columnColors;
         };
 
         this.addColorThresholds = function (thresholds) {
