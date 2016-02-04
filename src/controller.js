@@ -4,7 +4,7 @@
  */
 angular.module('gridshore.c3js.chart')
 	/**
-	 * @controller 
+	 * @controller
 	 */
     .controller('ChartController', ['$scope', '$timeout', function ($scope, $timeout) {
 
@@ -156,7 +156,7 @@ angular.module('gridshore.c3js.chart')
             if ($scope.gaugeLabelFormatFunction) {
                 config.gauge.label = config.gauge.label || {};
                 config.gauge.label.format = $scope.gaugeLabelFormatFunction;
-            }            
+            }
             if ($scope.point != null) {
                 config.point = $scope.point;
             }
@@ -172,7 +172,7 @@ angular.module('gridshore.c3js.chart')
             if ($scope.pieLabelFormatFunction) {
                 config.pie.label = config.pie.label || {};
                 config.pie.label.format = $scope.pieLabelFormatFunction;
-            }            
+            }
             if ($scope.donut != null) {
                 config.donut = $scope.donut;
             } else {
@@ -181,7 +181,7 @@ angular.module('gridshore.c3js.chart')
             if ($scope.donutLabelFormatFunction) {
                 config.donut.label = config.donut.label || {};
                 config.donut.label.format = $scope.donutLabelFormatFunction;
-            }            
+            }
             if ($scope.onInit != null) {
                 config.oninit = $scope.onInit;
             }
@@ -237,12 +237,14 @@ angular.module('gridshore.c3js.chart')
             $scope.config = config;
 
             if ($scope.chartData && $scope.chartColumns) {
-                $scope.$watch('chartData', function () {
-                    loadChartData();
-                },true);
+                ;
             } else {
                 $scope.chart = c3.generate($scope.config);
             }
+
+            $scope.$watch('chartData', function () {
+                loadChartData();
+            },true);
 
             $scope.$on('$destroy', function () {
                 $timeout(function(){
@@ -252,6 +254,14 @@ angular.module('gridshore.c3js.chart')
                     }
                 }, 10000)
             });
+        };
+
+        this.setChartData = function(chartData) {
+            $scope.chartData = chartData;
+        };
+
+        this.setChartColumns = function(chartColumns) {
+            $scope.chartColumns = chartColumns;
         };
 
         this.addColumn = function (column, columnType, columnName, columnColor) {
@@ -399,7 +409,7 @@ angular.module('gridshore.c3js.chart')
                 }
             }
         };
-        
+
         this.addColorFunction = function (colorFunction) {
             $scope.colorFunction = colorFunction;
         };

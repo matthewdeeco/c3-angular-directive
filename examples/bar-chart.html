@@ -7,13 +7,21 @@
 </head>
 <body ng-controller="GraphCtrl">
 
-<c3chart bindto-id="chart1" show-labels="true">
+<c3chart bindto-id="chart1" show-labels="true" padding-left="200">
     <chart-column column-id="bar1"
                   column-name="Bar 1"
-                  column-color="green"
-                  column-values="30,200,100,400,150,250"
+                  column-values="30,200,100,400,150,250,10,298,122,34,67,84,121,3,121"
+                  column-type="bar"/>
+    <chart-column column-id="bar2"
+                  column-name="Bar 2"
+                  column-values="30,200,100,400,150,250,10,298,122,34,67,84,121,3,121"
                   column-type="bar"/>
     <chart-bar ratio="1"/>
+    <chart-group group-values="bar1,bar2" />
+    <chart-axis axis-rotate="true"/>
+    <chart-subchart extent="[-1,5]" rotated-padding-right="200" height="40"/>
+    <chart-tooltip include-total="true" joined-tooltip="true" show-tooltip="true"></chart-tooltip>
+    <chart-colors column-colors="{bar1: 'green', bar2: 'red'}"></chart-colors>
 </c3chart>
 <!-- Javascript includes -->
 <script src="assets/js/d3.min.js" charset="utf-8"></script>
