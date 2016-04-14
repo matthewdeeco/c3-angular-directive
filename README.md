@@ -60,8 +60,27 @@ In the end you just need one file in your project: c3-angular.min.js
 
 ## Version History
 
-### 1.0 Upcoming
-SOme final functionalities for the initial release. Want to add click events on the legend and maybe some other features.
+### 1.2
+- In issue 104 @AesSedai proposed more properties for the legend inset directive. These are now added.
+- In issue 102 @jtaylor1022 asked for the grid-class attribute and I added the position as well.
+
+Bugs fixed:
+- Issue 104: Fixed problem with the time format function
+
+### 1.1
+Added pull requests
+- marton987 (Martin Freytes): Added regions to line charts by adding a new directive
+- stevezau (Steve): Added support for empty data labels.
+
+Bugs fixed:
+- Issue 86: Has to do with the colors.
+
+### 1.0
+Squashed a number of bugs, some of them related to tick formatting of timeseries data.
+
+Added the  click  and mouse events on the legend.
+
+Bigger refactoring to the structure of the source code and a big change to the examples.
 
 ### 0.7.0
 Focus is improvements to the structure of the project and the documentation. Also fixed some bugs.

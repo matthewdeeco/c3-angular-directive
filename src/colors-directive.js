@@ -15,7 +15,7 @@ angular.module('gridshore.c3js.chart')
  *
  * @param {String} color-pattern A string containing comma separated hex colors
  * @param {String} thresholds A string containing comma separated numeric values
- *   
+ *
  * {@link http://c3js.org/reference.html#color-pattern| c3js docs}
  * @param {Function} color-function Provide a function that receives the value to determine a color for that value.
  *
@@ -23,12 +23,12 @@ angular.module('gridshore.c3js.chart')
  *
  * @example
  * Usage:
- *   <chart-color color-pattern="..." color-function="..." thresholds="..."/>
- * 
+ *   <chart-colors color-pattern="..." color-function="..." thresholds="..."/>
+ *
  * Example:
  *   {@link http://jettro.github.io/c3-angular-directive/#examples}
- * 
- *   
+ *
+ *
  */
 function ChartColors () {
     var colorsLinker = function (scope, element, attrs, chartCtrl) {
@@ -40,14 +40,14 @@ function ChartColors () {
 
         var pattern = attrs.colorPattern;
         if (pattern) {
-            chartCtrl.addColors(pattern.split(","));
+            chartCtrl.addColorPatterns(pattern.split(","));
         }
 
         var thresholds = attrs.thresholds;
-        if(thresholds){
+        if (thresholds){
             chartCtrl.addColorThresholds(thresholds.split(","));
         }
-        
+
         if (attrs.colorFunction) {
             chartCtrl.addColorFunction(scope.colorFunction());
         }

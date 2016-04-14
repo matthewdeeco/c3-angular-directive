@@ -5,32 +5,27 @@ angular.module('gridshore.c3js.chart')
  * @ngdoc directive
  * @name chartSubchart
  * @description
- *  `chart-subchart` is used to customize the properties of the subchart, and the chart's initial extent.
+ *  `chart-subchart` is used to customize the properties of the subchart.
  *
  * Restrict To:
  *   Element
- * 
+ *
  * Parent element:
  *   c3chart
  *
  * @param {Boolean} show-x Configure to show the values of the x-axis or not (default).
- * 
+ *
  *   {@link http://c3js.org/reference.html#subchart-show| c3js doc}
- * 
+ *
  * @param {Number} height Height of the subchart (or width if the axis is rotated).
- * 
- * @param {Array} extent Provide the inital viewport of the chart and subchart.
- * 
- *   Array consisting of two Numbers, corresponding to the start and end x values.
- *   {@link http://c3js.org/reference.html#axis-x-extent| c3js doc}
- * 
+ *
  * @param {Number} rotatedPaddingRight In a rotated chart, the subchart's right padding.
- * 
+ *
  * @param {Number} rotatedPaddingLeft In a rotated chart, the subchart's left padding.
  *
  * @example
  * Usage:
- *   <chart-subchart show-x="false" height="30" rotated-padding-right="230" extent="[0,18]"/>
+ *   <chart-subchart show-x="false" height="30" rotated-padding-right="230" "/>
  */
 
 function ChartSubchart ($parse) {
@@ -62,11 +57,6 @@ function ChartSubchart ($parse) {
         }
 
         chartCtrl.addSubchart(subchart);
-
-        var extent = $parse(attrs.extent)(scope);
-        if (extent) {
-            chartCtrl.addExtent(extent);
-        }
 
     };
 
