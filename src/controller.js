@@ -367,7 +367,6 @@ function ChartController($scope, $timeout) {
                 $scope.config.axis.x.extent = $scope.extent;
                 setTimeout(function() {
                     if ($scope.chartIsGenerated) {
-                        console.log(extent);
                         $scope.chart.zoom(extent);
                     }
                 }, 250);

@@ -1,4 +1,4 @@
-/*! c3-angular - v1.2.0 - 2016-04-14
+/*! c3-angular - v1.2.0 - 2016-04-15
 * https://github.com/jettro/c3-angular-directive
 * Copyright (c) 2016 ; Licensed  */
 angular.module('gridshore.c3js.chart', []);
@@ -1401,7 +1401,6 @@ function ChartController($scope, $timeout) {
                 $scope.config.axis.x.extent = $scope.extent;
                 setTimeout(function() {
                     if ($scope.chartIsGenerated) {
-                        console.log(extent);
                         $scope.chart.zoom(extent);
                     }
                 }, 250);
