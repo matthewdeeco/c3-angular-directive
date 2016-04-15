@@ -1377,7 +1377,6 @@ function ChartController($scope, $timeout) {
                 config.axis.x = {};
             }
             config.axis.x.extent = $scope.extent;
-            console.log($scope.extent);
         }
 
         $scope.config = config;
@@ -1399,9 +1398,13 @@ function ChartController($scope, $timeout) {
 
         if ($scope.extent) {
             $scope.$watch('extent', function(extent) {
-                if ($scope.chartIsGenerated) {
-                    $scope.chart.zoom(extent);
-                }
+                $scope.config.axis.x.extent = $scope.extent;
+                setTimeout(function() {
+                    if ($scope.chartIsGenerated) {
+                        console.log(extent);
+                        $scope.chart.zoom(extent);
+                    }
+                }, 250);
             }, true);
         }
 
@@ -1738,8 +1741,9 @@ function ChartController($scope, $timeout) {
                 $scope.chartCallbackFunction($scope.chart);
             }
         } else {
-            $scope.config.data.unload = true;
-            $scope.chart.load($scope.config.data);
+            $scope.chart.load($scope.config.data, {unload: true, done: function() {
+                $scope.chart.zoom($scope.extent);
+            }});
         }
     }
 }
